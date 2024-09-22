@@ -6,25 +6,29 @@
 
 > ### **TABLE OF CONTENTS**
 
-1.  [File Name](#file-name)
-2.  [Header Files](#header-files)
-3.  [Include Order](#include-order)
-4.  [Macros](#macros)
-5.  [Variables](#variables)
-6.  [Enumarations](#enumerations)
-7.  [Structures And Unions](#structures-and-unions)
-8.  [Typedefs](#typedefs)
-9.  [Functions](#functions)
-10. [Generic](#generic)
-11. [Notes](#notes)
+1.  [Indentation](#indentation)
+2.  [File Name](#file-name)
+3.  [Header Files](#header-files)
+4.  [Include Order](#include-order)
+5.  [Macros](#macros)
+6.  [Variables](#variables)
+7.  [Enumerations](#enumerations)
+8.  [Structures And Unions](#structures-and-unions)
+9.  [Typedefs](#typedefs)
+10. [Functions](#functions)
+11. [Best Practices](#best-practices)
 
-&nbsp;
+> ### **INDENTATION**
+
+1.  Avoid using `tabs` and use `spaces`
+2.  Convert `tabs` to `spaces`
+3.  Make `tabsize` to `4 spaces`
 
 > ### **FILE NAME**
 
-1.  All lower case with all the words seperated by underscore.
+1.  All lower case with all the words separated by underscore.
 
-    <u>**Example :**</u> `my_file.x` , .x = file extention.
+    <u>**Example :**</u> `my_file.x` , .x = file extension.
 
 > ### **HEADER FILES**
 
@@ -32,7 +36,7 @@
 
     <u>**Example :**</u> `app_log.h`
 
-2.  Allays add `Header Guard` first.
+2.  Always add `Header Guard` first.
 
 3.  Header guard must be in this format `__<FILE_NAME>_H__`
 
@@ -51,7 +55,7 @@
 > ### **INCLUDE ORDER**
 
 1. `Standard Library Headers`
-2. `Outher Library Headers`
+2. `Other Library Headers`
 3. `Project Specific Headers`
 
    <u>**Example :**</u> `app.h`.
@@ -61,7 +65,7 @@
    #define __APP_H__
 
    #include <stdint.h> // standard library
-   #include <GLFW/glfw.h> // outher library
+   #include <GLFW/glfw.h> // Other library
    #include <app_log.h> // project base library
 
    /* code area */
@@ -73,7 +77,7 @@
 
    ```c
    #include <string.h> // standard library
-   #include <glad.h> // outher library
+   #include <glad.h> // Other library
    #include <app.h> // app header file
 
    /* code area */
@@ -91,11 +95,11 @@
 
     #define PH_SENSOR_DEVICE_CODE (123)
 
-    #define PH_SENSOR_DEVICE_VENDOE_ID "V_123"
+    #define PH_SENSOR_DEVICE_VENDOR_ID "V_123"
 
     ```
 
-3.  Insted of writing full name `first initials` or a `acroname` can be used but `name should be consistant in the module or package` and `should be descriptive`.
+3.  Instead of writing full name `first initials` or a `acronym` can be used but `name should be consistant in the module or package` and `should be descriptive`.
 
     <u>**Example :**</u> Considering file name as `robot_arm.h`,
 
@@ -115,7 +119,7 @@
 > ### **VARIABLES**
 
 1.  Every variable name must be `self explanatory`.
-2.  Variable name must be in `lowerCamelCase`.
+2.  Variable name must be in `lowerCamelCase` or `snake_case(Not Recomanded)`.
 3.  Variable names must obey their `prefix`.
 
     ### Variable Prefix
@@ -130,7 +134,7 @@
 
 6.  `Constant variables` must be writen in `CAPITAL_CASE`.
 
-7.  `Constant variables` must be declared `before outher varibales` and should be `static`.
+7.  `Constant variables` must be declared `before Other varibales` and should be `static`.
 
 8.  All `array names` must have `resonable suffix or prefix` , like `arr`, `table` or `matrix` to identify as array.
 
@@ -172,15 +176,14 @@
 
         return 0;
     }
-        ```
     ````
 
 > ### **ENUMERATIONS**
 
-1.  Enum name must be `prefixed` by `file_name`.
+1.  Enum name must be `prefixed` by `file_name` separated by underscore( `_` ).
 2.  Enum name must be in `PascalCase` .
 3.  Enum `elements` must be all `CAPITAL_CASE`.
-4.  Enum `elements` must be `prefixed` by `FILE_NAME` folowed by `ENUM_NAME`.
+4.  Enum `elements name` must be `prefixed` by `file_name` followed by `enum_name` all separated by underscore( `_` ) .
 
     <u>**Example :**</u>`app_log.h`
 
@@ -253,61 +256,62 @@
     // Typedef enum app_log_Level to app_log_Level_t
     typedef enum app_log_Level app_log_Level_t;
 
-    // Typedef struct app_log_Context to app_log_Contex_t
-    typedef struct app_log_Context app_log_Contex_t;
-
+    // Typedef struct app_log_Context to app_log_Context_t
+    typedef struct app_log_Context app_log_Context_t;
 
     typedef struct app_log_Context app_log_Ctx_t;
     ```
 
 > ### **FUNCTIONS**
 
-1. Functions declared in `source files` are `Private Functions`.
-2. Functions declared in `header files` are `Public Functions`.
-3. `Public Function` name must be `prefixed` with `file_name` plus an underscore( `_` ).
-3. `Public Function` name must be in `PascalCase`.
-3. `Public Functions` must be `defined` in `source file`.
-4. `Private Function` name must be in `PascalCase`.
-5. `Private Function` must be declared `static`.
-6. `Private Functions` are defined `before` `Public Functions`.
+1.  Functions declared in `source files (.c files)` are `Private Functions`.
+2.  Functions declared in `header files (.h files)` are `Public Functions`.
+3.  `Public Function` name must be `prefixed` with `file_name` plus an underscore( `_` ).
+4.  `Public Function` name must be in `PascalCase`.
+5.  `Public Functions` must be `defined` in `source file`.
+6.  `Private Function` name must be in `PascalCase`.
+7.  `Private Function` must be declared `static`.
+8.  `Private Functions` are defined `before` `Public Functions`.
 
-> ### **PRIVATE FUNCTIONS**
+    <u>**Example :**</u> `app_log.h`
 
-1.  These functions should be strictly defined and declared in the source file only.
-2.  Function name must contain a verb, preferably start with verb.
-3.  Function name must be in upper camel case (Pascal Case)
+    ```c
+    // Public function declaration.
+    void app_log_Init(void);
 
-    <u>**Example :**</u> `UpperCamelCase`
+    // Public function declaration.
+    void app_log_SetLevel(int level);
 
-4.  Must be declared as static.
-5.  File name prefixing should not be used.
+    ```
 
-> ### **PUBLIC FUNCTIONS**
+    <u>**Example :**</u> `app_log.c`
 
-1.  Function name must contain a verb, preferably start with verb.
-2.  Function name must be in upper camel case (Pascal Case)
-3.  Must be prefixed with file name.
-4.  File name and function name should be seperated using an underscore.
+    ```c
 
-    <u>**Example :**</u>
+    // Private function declaration.
+    static void ClearLogBuffer(void);
 
-    A function inside a file `app_sensor.h` can be `app_sensor_GetSensorData()`
+    // Private function definition.
+    static void ClearLogBuffer(void)
+    {
+        // code area
+    }
 
-5.  Function name might be suffixed with their return type.`*`.
+    // Public function definition
+    void app_log_Init(void)
+    {
+        // code area
+    }
 
-    - Type uint32*t: use suffix *`_ul`\_.
-    - Type uint16*t: use suffix *`_us`\_.
-    - Type uint8*t: use suffix *`_uc`\_.
-    - Type void: use suffix _`_v`_.
-    - Any other return type: use suffix _`_x`_.
-    - Type pointer: use suffix _`_p`_ in addition to the above return type.
+    // Public function definition
+    void app_log_SetLevel(int level)
+    {
+        // code area
+    }
 
-> ### **GENERIC**
+    ```
 
-This are to be followed for every namings, unless specified
+> ### **BEST PRACTICES**
 
-1. Never use `__ or _` **prefix** for variables/functions/macros/types. This is reserved for C language itself
-
-> ### **NOTES**
-
-`*` **NOT MANDATORY**
+1.  Avoid `extern` as much as Possible.
+2.  Avoid `goto` statements or use them carefully.
