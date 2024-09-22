@@ -150,7 +150,7 @@
 
     <u>**Example :**</u> `main.c`
 
-    ````c
+    ```c
 
     static const char *MODULE_NAME_STR = "main"; /* Private constant variable */
 
@@ -176,7 +176,7 @@
 
         return 0;
     }
-    ````
+    ```
 
 > ### **ENUMERATIONS**
 
