@@ -20,9 +20,9 @@
 
 > ### **INDENTATION**
 
-1.  Avoid using `tabs` and use `spaces`
-2.  Convert `tabs` to `spaces`
-3.  Make `tabsize` to `4 spaces`
+1.  Avoid using `tabs` and use `spaces`.
+2.  Convert `tabs` to `spaces`.
+3.  Make `tabsize` to `4 spaces`.
 
 > ### **FILE NAME**
 
