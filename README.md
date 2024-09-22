@@ -218,7 +218,7 @@
     {
         int valueInt;
         float valueFloat;
-        char valueStr;
+        char valueStr[4];
     };
     ```
 
