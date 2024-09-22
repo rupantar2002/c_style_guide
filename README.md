@@ -17,6 +17,7 @@
 9.  [Typedefs](#typedefs)
 10. [Functions](#functions)
 11. [Best Practices](#best-practices)
+12. [Commenting And Documentation](#commenting-and-documentation)
 
 > ### **INDENTATION**
 
@@ -315,3 +316,38 @@
 
 1.  Avoid `extern` as much as Possible.
 2.  Avoid `goto` statements or use them carefully.
+
+> ### **COMMENTING AND DOCUMENTATION**
+
+- ### This guide recommands `Doxygen` for documentation and commenting.
+
+- ### Example of doxygen `comment block`
+  ```c
+  /**
+  *
+  *
+  */
+  ```
+- ### Example of doxygen `inline comment`
+
+  ```c
+  /**< description here */
+  ```
+
+- ## Annotations
+  - `@file` Describes the contents of a file.
+  - `@brief` Short summary of the construct (functions, macros, etc.).
+  - `@param` Documents function parameters.
+  - `@return` Documents the return value of functions.
+  - `@struct` Describes structures and their members.
+  - `@var` Documents members of structures or unions.
+  - `@enum` Describes an enum type.
+  - `@def` Documents macros.
+  - `@typedef` Documents typedefs.
+  - `@ingroup` Groups functions, variables, or types into modules or logical sections.
+  - `@note` Adds important notes.
+  - `@warning` Highlights critical warnings.
+  - `@todo` Marks areas that need further development.
+  - `@deprecated` Marks code as obsolete or not recommended for use.
+  - `@example` Provides examples of how to use code constructs.
+  - `@code` and `@endcode` Documents inline code examples.
