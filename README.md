@@ -38,7 +38,7 @@
 
 2.  Always add `Header Guard` first.
 
-3.  Header guard must be in this format `__<FILE_NAME>_H__`
+3.  Header guard must be in this format `__FILE_NAME_H__`
 
     <u>**Example :**</u> `app_log.h`
 
