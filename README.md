@@ -319,16 +319,18 @@
 
 > ### **COMMENTING AND DOCUMENTATION**
 
-- ### This guide recommands `Doxygen` for documentation and commenting.
+- This guide recommands `Doxygen` for documentation and commenting.
 
-- ### Example of doxygen `comment block`
+- Example of doxygen `comment block`
+
   ```c
   /**
   *
   *
   */
   ```
-- ### Example of doxygen `inline comment`
+
+- Example of doxygen `inline comment`
 
   ```c
   /**< description here */
