@@ -1,8 +1,4 @@
-<!-- ## <u>**C NAMING CONVENTIONS**</u> -->
-
 # C Style Guide
-
-&nbsp;
 
 > ### **TABLE OF CONTENTS**
 
@@ -16,8 +12,15 @@
 8.  [Structures And Unions](#structures-and-unions)
 9.  [Typedefs](#typedefs)
 10. [Functions](#functions)
-11. [Best Practices](#best-practices)
-12. [Commenting And Documentation](#commenting-and-documentation)
+11. [Documentation and Commenting](#documentation-and-commenting)
+    1. [Files](#commenting-files)
+    2. [Macros](#commenting-macros)
+    3. [Structures and Unions](#commenting-structures-and-unions)
+    4. [Enums](#commenting-enums)
+    5. [Typedefs](#commenting-typedefs)
+    6. [Functions](#commenting-functions)
+    7. [Variables](#commenting-variables)
+    8. [Outher](#inline-comments)
 
 > ### **INDENTATION**
 
@@ -288,7 +291,6 @@
     <u>**Example :**</u> `app_log.c`
 
     ```c
-
     // Private function declaration.
     static void ClearLogBuffer(void);
 
@@ -309,15 +311,9 @@
     {
         // code area
     }
-
     ```
 
-> ### **BEST PRACTICES**
-
-1.  Avoid `extern` as much as Possible.
-2.  Avoid `goto` statements or use them carefully.
-
-> ### **COMMENTING AND DOCUMENTATION**
+> ### **DOCUMENTATION AND COMMENTING**
 
 - This guide recommands `Doxygen` for documentation and commenting.
 
@@ -353,3 +349,253 @@
   - `@deprecated` Marks code as obsolete or not recommended for use.
   - `@example` Provides examples of how to use code constructs.
   - `@code` and `@endcode` Documents inline code examples.
+
+1. ### Commenting Files
+
+   <u>**Example :**</u> `app_log.h`
+
+   ```c
+   /**
+   * @file app_log.h
+   * @brief Provides logging functionalities for the application.
+   *
+   * This file contains functions and structures to manage logs
+   * within the application, including setting log levels.
+   */
+
+   #ifndef __APP_LOG_H__
+   #define __APP_LOG_H__
+
+   /* code area */
+
+   #endif //__APP_LOG_H__
+   ```
+
+2. ### Commenting Macros
+
+   <u>**Example :**</u> `ph_sensor.h`
+
+   ```c
+   /**
+    * @brief Defines the device address for the pH sensor.
+    *
+    * This macro holds the I2C address used to communicate with the pH sensor.
+    */
+   #define PH_SENSOR_DEVICE_ADDRESS (0x45)
+   ```
+
+   ### or
+
+   ```c
+   #define PH_SENSOR_DEVICE_CODE (123) /**< Defines ph sensor device code */
+   ```
+
+3. ### Commenting Structures and Unions
+
+   <u>**Example :**</u> `app_log.h`
+
+   ```c
+   /**
+    * @brief Holds the logging context for the application.
+    *
+    * This structure contains the global log level and a buffer
+    * to hold log messages temporarily.
+    */
+   struct  app_log_Context{
+       int globalLogLevel;    /**< Global log level for the application. */
+       char logBuffer[100];   /**< Buffer to store log messages. */
+   } ;
+
+   /**
+    * @brief Holds the log value.
+    *
+    * This union contains the log value.
+    */
+   union app_log_Value
+   {
+      int valueInt; /**< Integer value. */
+      float valueFloat; /**< Fraction value. */
+      char valueStr[4]; /**< String value. */
+   };
+
+
+   /**
+    * @brief Holds the logging context for the application.
+    *
+    * This structure contains the global log level and a buffer
+    * to hold log messages temporarily.
+    */
+   typedef struct {
+       int globalLogLevel;    /**< Global log level for the application. */
+       char logBuffer[100];   /**< Buffer to store log messages. */
+   } app_log_Context_t;
+   ```
+
+4. ### Commenting Enums
+
+   <u>**Example :**</u> `app_log.h`
+
+   ```c
+   /**
+    * @brief Defines log levels for the application.
+    *
+    * These enum values represent different levels of logging
+    * verbosity in the system.
+    */
+   typedef enum {
+       APP_LOG_LEVEL_DEBUG = 0,  /**< Detailed debug messages. */
+       APP_LOG_LEVEL_INFO,       /**< Informational messages. */
+       APP_LOG_LEVEL_WARN,       /**< Warnings about potential issues. */
+       APP_LOG_LEVEL_ERROR       /**< Critical errors that need attention. */
+    } app_log_Level_t;
+   ```
+
+5. ### Commenting Typedefs
+
+   <u>**Example :**</u> `app_log.h`
+
+   ```c
+   /**
+    * @brief Typedef for the logging status codes.
+    *
+    * This typedef makes it easier to reference the log status codes
+    * defined in the app_log_Status enum.
+    */
+   typedef enum app_log_Status app_log_Status_t;
+   ```
+
+6. ### Commenting Functions
+
+   <u>**Example :**</u> `app_log.h`
+
+   ```c
+   /**
+    * @brief Initializes the logging system.
+    *
+    * This function sets up the logging system and prepares it for use.
+    * It should be called at the start of the application.
+    *
+    * @param level Initial log level to be set (0 = Debug, 1 = Info, etc.).
+    * @return 0 if initialization was successful, -1 otherwise.
+    */
+   int app_log_Init(int level);
+   ```
+
+7. ### Commenting Variables
+
+   <u>**Example :**</u> `app_log.c`
+
+   ```c
+   /**
+    * @brief Holds the current log level for the application.
+    *
+    * This variable controls the verbosity of log messages
+    * in the system. Lower levels produce more detailed logs.
+    */
+   int globalLogLevel;
+   ```
+
+   ### or
+
+   ```c
+   int globalLogLevel; /**< Holds the current log level for the application. */
+   ```
+
+8. ### Inline Comments
+
+   <u>**Example :**</u> `app_log.h`
+
+   ```c
+   int app_log_SetLevel(int level) {
+       if (level < APP_LOG_LEVEL_DEBUG || level > APP_LOG_LEVEL_ERROR) {
+           return -1; /**< Invalid log level. */
+    }
+
+    // Set the global log level to the provided value.
+    globalLogLevel = level;
+
+    return 0; /**< Successfully set the log level. */
+   }
+   ```
+
+9. ### Modules or Groups (Files, Functions,Structures etc.)
+
+   <u>**Example :**</u> `app_log.h`
+
+   ```c
+   /**
+    * @defgroup Logging Logging Module
+    * @file app_log.h
+    * @brief Provides logging functionalities for the application.
+    *
+    */
+
+   #ifndef __APP_LOG_H__
+   #define __APP_LOG_H__
+
+   /**
+    * @defgroup Logging Logging Module
+    * @brief Holds the logging context for the application.
+    *
+    */
+    typedef struct {
+       int globalLogLevel;    /**< Global log level for the application. */
+       char logBuffer[100];   /**< Buffer to store log messages. */
+    } app_log_Context_t;
+
+
+   /**
+    * @defgroup Logging Logging Module.
+    * @brief Initializes the logging system.
+    * @param level Initial log level to be set (0 = Debug, 1 = Info, etc.).
+    * @return 0 if initialization was successful, -1 otherwise.
+    */
+   int app_log_Init(int level);
+
+   ```
+
+10. ### Todo , Warnings , Note and Depricated
+
+    <u>**Example :**</u> `app_log.h`
+
+    ```c
+    /**
+     * @brief This function resets the logging system.
+     *
+     * @todo Add error handling for memory allocation failures.
+     */
+    void app_log_Reset(void);
+
+    /**
+     * @warning This function clears all logs and cannot be undone.
+     */
+    void app_log_Clear(void);
+
+    /**
+     * @note This function must be called before any log is written.
+     */
+    void app_log_Init(void);
+
+    /**
+     * @deprecated Use app_log_SetLevel() instead.
+     */
+    void app_log_SetLoggingLevel(int level);
+
+    ```
+
+11. ### Example Section
+
+    <u>**Example :**</u> `app_log.h`
+
+    ```c
+    /**
+     * @example log_example.c
+     *
+     * This is an example of how to use the logging system.
+     *
+     * @code
+     *   app_log_Init(APP_LOG_LEVEL_INFO);
+     *   app_log_SetLevel(APP_LOG_LEVEL_DEBUG);
+     * @endcode
+     */
+    ```
