@@ -24,25 +24,24 @@
 
 > ### **INDENTATION**
 
-1.  Avoid using `tabs` and use `spaces`.
-2.  Convert `tabs` to `spaces`.
-3.  Make `tabsize` to `4 spaces`.
+1.  Avoid using tabs, `always use spaces`.
+2.  Convert all `tabs to spaces`.
+3.  Set `tab size` to `4 spaces`.
 
 > ### **FILE NAME**
 
-1.  All lower case with all the words separated by underscore.
+1.  File names should be `lowercase`, with words separated by underscores (`_`).
 
     <u>**Example :**</u> `my_file.x` , .x = file extension.
 
 > ### **HEADER FILES**
 
-1.  Files with `.h` extension is a header file .
+1.  Files with the `.h` extension are header files.
 
     <u>**Example :**</u> `app_log.h`
 
-2.  Always add `Header Guard` first.
-
-3.  Header guard must be in this format `__FILE_NAME_H__`
+2.  Always start header files with a `header guard`.
+3.  Header guards should follow the format: `__FILE_NAME_H__`.
 
     <u>**Example :**</u> `app_log.h`
 
@@ -58,9 +57,7 @@
 
 > ### **INCLUDE ORDER**
 
-1. `Standard Library Headers`
-2. `Other Library Headers`
-3. `Project Specific Headers`
+1. Headers should be included in this order: `standard library` headers, `external library` headers, then `project library` headers.
 
    <u>**Example :**</u> `app.h`.
 
@@ -69,8 +66,8 @@
    #define __APP_H__
 
    #include <stdint.h> // standard library
-   #include <GLFW/glfw.h> // Other library
-   #include <app_log.h> // project base library
+   #include <GLFW/glfw.h> // external library
+   #include <app_log.h> // project library
 
    /* code area */
 
@@ -89,7 +86,7 @@
 
 > ### **MACROS**
 
-1.  All `CAPITAL_CASE` with words `separated by` an underscore ( `_` ).
+1.  All `CAPITAL_CASE` with words separated by an underscore (`_`).
 2.  Must be prefixed by the file name.
 
     <u>**Example :**</u> Considering file name as `ph_sensor.h`,
@@ -140,7 +137,7 @@
 
 7.  `Constant variables` must be declared `before Other varibales` and should be `static`.
 
-8.  All `array names` must have `resonable suffix or prefix` , like `arr`, `table` or `matrix` to identify as array.
+8.  All `array names` must have resonable `suffix or prefix` , like `arr`, `table` or `matrix` to identify as array.
 
 9.  `char array` or `char pointer` intended to be used as ASCII string must be `suffixed` or `prefixed` with `string` or `str`
 
@@ -184,10 +181,10 @@
 
 > ### **ENUMERATIONS**
 
-1.  Enum name must be `prefixed` by `file_name` separated by underscore( `_` ).
+1.  Enum name must be `prefixed` by `file_name` separated by underscore(`_`).
 2.  Enum name must be in `PascalCase` .
-3.  Enum `elements` must be all `CAPITAL_CASE`.
-4.  Enum `elements name` must be `prefixed` by `file_name` followed by `enum_name` all separated by underscore( `_` ) .
+3.  Enum `constants` must be all `CAPITAL_CASE`.
+4.  Enum `constants` must be `prefixed` by `FILE_NAME` followed by `ENUM_NAME` all separated by underscore(`_`) .
 
     <u>**Example :**</u>`app_log.h`
 
@@ -276,6 +273,13 @@
 6.  `Private Function` name must be in `PascalCase`.
 7.  `Private Function` must be declared `static`.
 8.  `Private Functions` are defined `before` `Public Functions`.
+9.  Function name should never start with a verb.
+
+    <u>**Example :**</u>
+
+    `DeviceRunning()` **WRONG**
+
+    `IsDeviceRunning()` **RIGHT**
 
     <u>**Example :**</u> `app_log.h`
 
@@ -526,7 +530,7 @@
    /**
     * @defgroup Logging Logging Module
     * @file app_log.h
-    * @brief Provides logging functionalities for the application.
+    * @brief Provides logging functionality for the application.
     *
     */
 
@@ -554,20 +558,22 @@
 
    ```
 
-10. ### Todo , Warnings , Note and Depricated
+10. ### Todo , Warnings , Note and Deprecated
 
     <u>**Example :**</u> `app_log.h`
 
     ```c
     /**
-     * @brief This function resets the logging system.
+     * @brief Resets the logging system.
      *
      * @todo Add error handling for memory allocation failures.
      */
     void app_log_Reset(void);
 
     /**
-     * @warning This function clears all logs and cannot be undone.
+     * @brief Clear's log buffer.
+     *
+     * @warning Clears all logs; this action is irreversible.
      */
     void app_log_Clear(void);
 
